@@ -1,0 +1,112 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입 처리</title>
+<style type="text/css">
+	.container{
+		width: 600px;
+		margin: 20px auto;
+	}
+</style>
+</head>
+<body>
+	<%
+		request.setCharacterEncoding("utf-8");
+	
+		// requestJoin.jsp의 입력된 정보를 requst 객체를 통해 정보를 꺼내오세요.
+					
+		String id = request.getParameter("id");
+		String pass = request.getParameter("pass");
+		String passchk = request.getParameter("passchk");
+		String email = request.getParameter("email");
+		String tel = request.getParameter("tel");
+		String job = request.getParameter("job");
+		String age = request.getParameter("age");
+		String[] hobbys = request.getParameterValues("hobby");
+		String info = request.getParameter("info");
+		
+				
+		if(!(pass.equals(passchk))) {%>
+			<script type="text/javascript">
+				alert("비밀번호가 다릅니다.")
+			</script>			
+		<%}%>			
+						
+	
+	
+	<div class="container">
+		<table width="500" border="1">
+			
+				<tr height="50">
+					<td align="center" width="150">아이디</td>
+					<td width="350">
+						<%=id%>
+					</td>					
+				</tr>
+				
+				<tr height="50">
+					<td align="center" width="150">비밀번호</td>
+					<td width="350">
+						<%=pass%>
+					</td>					
+				</tr>
+				
+				<tr height="50">
+					<td align="center" width="150">비밀번호 확인</td>
+					<td width="350">
+						<%=passchk%>
+					</td>					
+				</tr>
+				
+				<tr height="50">
+					<td align="center" width="150">Email</td>
+					<td width="350">
+						<%=email%>
+					</td>					
+				</tr>
+				
+				<tr height="50">
+					<td align="center" width="150">전화번호</td>
+					<td width="350">
+						<%=tel%>
+					</td>					
+				</tr>
+				
+				<tr height="50">
+					<td align="center" width="150">관심분야</td>
+					<td width="350">
+					<% for(int i = 0; i < hobbys.length; i++) { %>
+						<%= hobbys[i] %>						
+					<%}%>													
+					</td>					
+				</tr>
+				
+				<tr height="50">
+					<td width="150" align="center">직업</td>
+					<td width="350">
+						<%=job%>
+					</td>
+				</tr>
+				
+				<tr height="50">
+					<td align="center" width="150">연령</td>
+					<td width="350">
+						<%=age%>												
+					</td>					
+				</tr>
+				<tr height="50">
+					<td align="center" width="150">남기는 말</td>
+					<td width="350">
+						<%=info%>
+					</td>
+				</tr>
+				
+			</table>
+	</div>
+	
+	
+</body>
+</html>

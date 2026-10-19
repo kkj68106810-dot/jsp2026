@@ -1,0 +1,85 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	tr td{
+		
+	}
+	.score.A{
+		width: 100%;
+		height: 60%;
+		background-color: blue;	 
+	}
+	.score.B{
+		width: 90%;
+		height: 60%;
+		background-color: blue;	 
+	}
+	.score.C{
+		width: 80%;
+		height: 60%;
+		background-color: blue;	 
+	}
+	.score.D{
+		width: 70%;
+		height: 60%;
+		background-color: blue;	 
+	}
+	.score.F{
+		width: 60%;
+		height: 60%;
+		background-color: #ffcccc;	 
+	}
+</style>
+
+</head>
+<body>
+	<%!
+		String[] names= {"김철수", "이영희", "박민수", "최지우", "정다은"};
+		int[] scores = {92, 78, 55, 85, 67};
+		
+		private String getGrade(int score) {			
+			String resultGrade = "F";
+			System.out.println(score);
+			for(int i = 0; i < scores.length; i++) {
+				if(score >= 90) {
+					resultGrade = "A";
+				} else if (score >= 80) {
+					resultGrade = "B";
+				} else if (score >= 70) {
+					resultGrade = "C";
+				} else if (score >= 60) {
+					resultGrade = "D";
+				}
+			}			
+			return resultGrade;
+		}
+	%>
+	<table border="1">
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>점수</th>
+			<th>등급</th>
+			<th>그래프</th>
+		</tr>
+		<% for(int j = 0 ; j < names.length; j++) { %>
+		<tr>
+		
+			<td><%=j+1%></td>
+			<td><%=names[j]%></td>
+			<td><%=scores[j]%></td>
+			<td><%=getGrade(scores[j]) %></td>
+			<td style="width:300px" class="score <%=getGrade(scores[j])%> ">
+			</td>	
+						
+		</tr>
+		<% } %>
+		
+	</table>
+</body>
+</html>
